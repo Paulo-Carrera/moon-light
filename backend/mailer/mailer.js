@@ -5,7 +5,7 @@
 // export const sendConfirmationEmail = async (to, productName) => {
 //   try {
 //     const { data, error } = await resend.emails.send({
-//       from: 'Product Pulse <onboarding@resend.dev>',
+//       from: 'MoonLight <onboarding@resend.dev>',
 //       to,
 //       subject: 'Order Confirmation',
 //       html: `
