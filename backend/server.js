@@ -36,6 +36,8 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+app.options('*', cors());
+
 // ✅ JSON parser for all non-webhook routes
 app.use(express.json());
 
