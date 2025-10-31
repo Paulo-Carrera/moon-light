@@ -3,27 +3,35 @@ import './ProductCard.css';
 import '../styles/global.css';
 
 const ProductCard = ({ product }) => {
-  const handleBuyClick = async () => {
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/create-checkout-session`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ product }),
-      });
+const handleBuyClick = async () => {
+  try {
+    const orderData = {
+      product,
+      customerEmail: 'test@example.com', // Replace with real input later
+      shippingName: 'John Doe',
+      shippingAddressLine1: '123 Main St',
+      shippingCity: 'Los Angeles',
+      shippingState: 'CA',
+      shippingPostalCode: '90001',
+    };
 
-      console.log('API base:', import.meta.env.VITE_API_BASE_URL);
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/create-checkout-session`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(orderData),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        console.error('No URL returned from Stripe');
-      }
-    } catch (err) {
-      console.error('Error creating Stripe session:', err);
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      console.error('❌ No URL returned from Stripe');
     }
-  };
+  } catch (err) {
+    console.error('❌ Error creating Stripe session:', err);
+  }
+};
 
   // Sale logic: x2 + 1 if < $50, x1.5 + 1 if ≥ $50, then round down to nearest 10 and subtract 0.01
   const markup = product.price < 50 ? 2 : 1.5;
