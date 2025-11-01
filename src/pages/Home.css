@@ -5,30 +5,49 @@ body, html {
   padding: 0;
   height: 100%;
   overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
 }
 
+/* Main container with sunset gradient */
 .home-main {
   min-height: 100vh;
   padding: 2rem;
-  background: linear-gradient(to top, #2c3e50, #fd746c, #ffb88c);
+  background: linear-gradient(to top,
+    #000000 0%,
+    #1a0033 25%,
+    #3a0066 45%,
+    #fd746c 70%,
+    #ffb88c 100%);
   position: relative;
   color: white;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Moon styling */
+/* Decorative gradient overlay */
+.home-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Moon element */
 .moon {
   position: absolute;
   top: 40px;
   right: 60px;
   width: 120px;
   height: 120px;
-  background: radial-gradient(circle at center, #fff, #ddd);
+  background: radial-gradient(circle at center, #fff, #ccc);
   border-radius: 50%;
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.8);
   z-index: 1;
 }
 
-/* Stars styling */
+/* Star cluster */
 .star {
   position: absolute;
   background: white;
@@ -42,70 +61,77 @@ body, html {
     300px 200px white,
     400px 50px white,
     500px 180px white;
+  z-index: 1;
 }
 
-/* Optional: make product cards pop against dark background */
-.product-card {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 1rem;
-  backdrop-filter: blur(5px);
-  color: white;
-}
-
-/* .home-main {
-  padding: 2rem;
-}
-
+/* Title styling */
 .home-title {
   text-align: center;
+  font-size: 2.5rem;
   margin-bottom: 2rem;
+  z-index: 1;
+  position: relative;
 }
 
+/* Product grid centered */
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
+/* Product card styling */
 .product-card {
-  background-color: #fff;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 280px;
+  transition: transform 0.2s ease;
 }
 
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+/* Product image */
 .product-image {
   width: 100%;
-  max-width: 200px;
+  height: auto;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
 
+/* Price styling */
 .price-original {
   text-decoration: line-through;
-  color: #888;
+  color: #ffb88c;
   margin-right: 0.5rem;
 }
 
 .price-sale {
-  color: #d32f2f;
   font-weight: bold;
+  color: #ffffff;
 }
 
+/* Buy button */
 .buy-button {
-  background-color: #0070f3;
-  color: white;
-  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #ffb88c;
   border: none;
   border-radius: 6px;
+  color: #000;
+  font-weight: bold;
   cursor: pointer;
-  margin-top: 1rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
 .buy-button:hover {
-  background-color: #005bb5;
-} */
+  background-color: #fd746c;
+}
