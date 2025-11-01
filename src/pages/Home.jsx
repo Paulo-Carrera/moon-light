@@ -20,28 +20,31 @@ const Home = () => {
 
   return (
     <div>
-      <main className="home-main">
-        <h1 className="home-title">Featured Products</h1>
-        <div className="product-grid">
-          {products.map((product, index) => (
-            <div key={index} className="product-card">
-              <img src={product.image} alt={product.name} className="product-image" />
-              <h2>{product.name}</h2>
-              <p>{product.description}</p>
-              <p>
-                <span className="price-original">${formatSalePrice(product.price * 2)}</span>{' '}
-                <span className="price-sale">${formatSalePrice(product.price)}</span>
-              </p>
-              <button
-                onClick={() => handleBuyNow(product)}
-                className="buy-button"
-              >
-                Buy Now
-              </button>
-            </div>
-          ))}
-        </div>
-      </main>
+<main className="home-main">
+  <div className="moon"></div>
+  <div className="star"></div>
+  <h1 className="home-title">Featured Products</h1>
+  <div className="product-grid">
+    {products.map((product, index) => (
+      <div key={index} className="product-card">
+        <img src={product.image} alt={product.name} className="product-image" />
+        <h2>{product.name}</h2>
+        <p>{product.description}</p>
+        <p>
+          <span className="price-original">${formatSalePrice(product.price * 2)}</span>{' '}
+          <span className="price-sale">${formatSalePrice(product.price)}</span>
+        </p>
+        <button
+          onClick={() => handleBuyNow(product)}
+          className="buy-button"
+        >
+          Buy Now
+        </button>
+      </div>
+    ))}
+  </div>
+</main>
+
     </div>
   );
 };

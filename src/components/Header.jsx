@@ -5,7 +5,7 @@ import '../styles/global.css';
 const Header = () => {
     return (
         <header className="site-header">
-            <div className="logo">ProductPulse</div>
+            <div className="logo">MoonLight</div>
             <nav className="nav-links">
                 <a href="/">Home</a>
                 <a href="/checkout">Checkout</a>

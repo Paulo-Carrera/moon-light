@@ -1,4 +1,59 @@
+/* Home.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
 .home-main {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(to top, #2c3e50, #fd746c, #ffb88c);
+  position: relative;
+  color: white;
+}
+
+/* Moon styling */
+.moon {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at center, #fff, #ddd);
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+  z-index: 1;
+}
+
+/* Stars styling */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
+  box-shadow:
+    50px 80px white,
+    120px 150px white,
+    200px 100px white,
+    300px 200px white,
+    400px 50px white,
+    500px 180px white;
+}
+
+/* Optional: make product cards pop against dark background */
+.product-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+  backdrop-filter: blur(5px);
+  color: white;
+}
+
+/* .home-main {
   padding: 2rem;
 }
 
@@ -53,4 +108,4 @@
 
 .buy-button:hover {
   background-color: #005bb5;
-}
+} */
