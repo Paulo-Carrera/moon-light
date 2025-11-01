@@ -53,6 +53,18 @@ app.post('/create-checkout-session', async (req, res) => {
     shippingPostalCode,
   } = req.body;
 
+  console.log('📦 Incoming checkout request:', {
+    product,
+    customerEmail,
+    shippingName,
+    shippingAddressLine1,
+    shippingCity,
+    shippingState,
+    shippingPostalCode,
+  });
+
+  console.log('🌐 FRONTEND_URL:', process.env.FRONTEND_URL);
+
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -87,7 +99,8 @@ app.post('/create-checkout-session', async (req, res) => {
       },
     });
 
-    // ✅ Insert shipping info before payment
+    console.log('✅ Stripe session created:', session);
+
     await insertOrder({
       product_name: product.name,
       status: 'initiated',
@@ -104,6 +117,8 @@ app.post('/create-checkout-session', async (req, res) => {
 
     res.json({ url: session.url });
   } catch (err) {
+    console.error('❌ Stripe session creation failed:', err.message);
+
     await insertOrder({
       product_name: product?.name || 'unknown',
       status: 'failed',
