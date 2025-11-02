@@ -47,7 +47,12 @@ body, html {
   z-index: 1;
 }
 
-/* Star cluster */
+/* Star cluster with twinkle animation */
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
 .star {
   position: absolute;
   background: white;
@@ -62,6 +67,8 @@ body, html {
     400px 50px white,
     500px 180px white;
   z-index: 1;
+  animation: twinkle 4s infinite ease-in-out;
+  animation-delay: 1s;
 }
 
 /* Title styling */
@@ -134,4 +141,16 @@ body, html {
 
 .buy-button:hover {
   background-color: #fd746c;
+}
+
+/* Glowing nav links */
+.nav-link {
+  color: white;
+  text-decoration: none;
+  transition: text-shadow 0.3s ease;
+}
+
+.nav-link:hover {
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.8),
+               0 0 24px rgba(255, 255, 255, 0.6);
 }

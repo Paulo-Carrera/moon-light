@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #3a0066 ;
+  background-color: #3a0066;
   color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -12,6 +12,11 @@
   font-size: 1.5rem;
   font-weight: bold;
   letter-spacing: 0.5px;
+  color: white;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.6),
+    0 0 12px rgba(255, 255, 255, 0.4),
+    0 0 18px rgba(255, 255, 255, 0.2);
 }
 
 .nav-links {
@@ -23,9 +28,13 @@
   color: white;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .nav-links a:hover {
   color: #d0eaff;
+  text-shadow:
+    0 0 6px rgba(208, 234, 255, 0.6),
+    0 0 12px rgba(208, 234, 255, 0.4),
+    0 0 18px rgba(208, 234, 255, 0.2);
 }
