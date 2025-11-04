@@ -1,12 +1,104 @@
-body {
-  font-family: 'Inter', system-ui, sans-serif;
+/* Global Reset */
+html, body {
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9; /* optional: light background */
-  color: #222; /* optional: clean text color */
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* Universal Gradient Wrapper */
+.gradient-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(to top,
+    #000000 0%,
+    #1a0033 25%,
+    #3a0066 45%,
+    #fd746c 70%,
+    #ffb88c 100%);
+  position: relative;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.gradient-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Star Cluster */
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
+  box-shadow:
+    50px 80px white,
+    120px 150px white,
+    200px 100px white,
+    300px 200px white,
+    400px 50px white,
+    500px 180px white;
+  z-index: 1;
+  animation: twinkle 4s infinite ease-in-out;
+  animation-delay: 1s;
+}
+
+/* Responsive Layout for Mobile */
+@media (max-width: 600px) {
+  .gradient-wrapper {
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .moon {
+    top: 20px;
+    right: 5%;
+    transform: none;
+    height: 15%;
+    width: 15%;
+    position: absolute;
+  }
+
+  .home-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .product-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .product-card {
+    width: 300px;
+    max-width: 320px;
+    margin: auto;
+  }
+
+  .buy-button {
+    width: 100%;
+    text-align: center;
+  }
 }
