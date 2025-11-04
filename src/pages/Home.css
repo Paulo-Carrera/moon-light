@@ -174,3 +174,42 @@ html, body {
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.8),
                0 0 24px rgba(255, 255, 255, 0.6);
 }
+
+/* Responsive tweaks for mobile screens */
+@media (max-width: 600px) {
+  .home-main {
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .moon {
+    top: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 100px;
+    height: 100px;
+  }
+
+  .home-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .product-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    width: 90%;
+    max-width: 320px;
+    padding: 1rem;
+  }
+
+  .buy-button {
+    width: 100%;
+    text-align: center;
+  }
+}
