@@ -24,6 +24,8 @@ export default function FAQ() {
   };
 
   return (
+    <div className="gradient-wrapper">
+      <div className="star"></div>
     <div className="page">
       <h1>Frequently Asked Questions</h1>
       {faqs.map((faq, index) => (
@@ -33,7 +35,9 @@ export default function FAQ() {
           </button>
           {openIndex === index && <p className="faq-answer">{faq.answer}</p>}
         </div>
+
       ))}
+    </div>
     </div>
   );
 }

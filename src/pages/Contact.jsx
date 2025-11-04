@@ -2,6 +2,8 @@ import React from 'react';
 
 const Contact = () => {
   return (
+    <div className="gradient-wrapper">
+      <div className="star"></div>
     <div style={styles.container}>
       <h1 style={styles.title}>Contact Us</h1>
 
@@ -17,6 +19,7 @@ const Contact = () => {
           Send Us an Email
         </a>
       </div>
+    </div>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 export default function Refunds() {
   return (
+    <div className="gradient-wrapper">
+      <div className="star"></div>
     <div className="page">
       <h1>Refund Policy</h1>
       <p>If you're not satisfied with your purchase, you may request a refund within 30 days of delivery.</p>
@@ -8,6 +10,7 @@ export default function Refunds() {
         <li>Digital products are non-refundable</li>
         <li>Shipping costs are non-refundable</li>
       </ul>
+    </div>
     </div>
   );
 }

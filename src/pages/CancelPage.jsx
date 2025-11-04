@@ -14,10 +14,13 @@ const CancelPage = () => {
   }, [navigate]);
 
   return (
+    <div className="gradient-wrapper">
+      <div className="star"></div>
     <div style={styles.container}>
       <div style={styles.spinner}></div>
       <h2 style={styles.heading}>Payment Canceled</h2>
       <p style={styles.text}>No worries — redirecting you back to products...</p>
+    </div>
     </div>
   );
 };

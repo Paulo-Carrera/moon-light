@@ -1,5 +1,7 @@
 export default function Shipping() {
   return (
+    <div className="gradient-wrapper">
+      <div className="star"></div>
     <div className="page">
       <h1>Shipping Information</h1>
       <p>We ship to all 50 U.S. states. Orders are processed within 1–2 business days.</p>
@@ -8,6 +10,7 @@ export default function Shipping() {
         <li>Expedited shipping: 2–4 business days</li>
         <li>Tracking info sent via email</li>
       </ul>
+    </div>
     </div>
   );
 }

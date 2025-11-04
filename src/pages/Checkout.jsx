@@ -46,6 +46,8 @@ const Checkout = () => {
   };
 
   return (
+    <div className="gradient-wrapper">
+      <div className="star"></div>
     <div>
       <h1 style={{ textAlign: 'center' }}>Checkout</h1>
 
@@ -202,6 +204,7 @@ const Checkout = () => {
           Buy Now
         </button>
       </form>
+    </div>
     </div>
   );
 };

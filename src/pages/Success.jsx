@@ -28,6 +28,8 @@ export default function Success() {
   : 'Not available';
 
   return (
+    <div className="gradient-wrapper">
+      <div className="star"></div>
     <div className="success-page">
       <h1>Product Pulse</h1>
       <h2>✅ Thank you for your order!</h2>
@@ -52,6 +54,7 @@ export default function Success() {
 
       <p><small><strong>Check email for confirmation.</strong></small></p>
       <a href="/">Back to home</a>
+    </div>
     </div>
   );
 }
