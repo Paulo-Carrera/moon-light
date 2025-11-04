@@ -24,10 +24,18 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  padding: 0;
   min-width: 320px;
   min-height: 100vh;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    ellipse at bottom center,
+    #000000 0%,
+    #3b0a57 40%,
+    #ff7e5f 80%
+  );
 }
 
 h1 {
