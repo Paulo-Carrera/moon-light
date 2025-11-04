@@ -182,10 +182,11 @@ html, body {
     align-items: center;
   }
 
+  /* Keep moon on the right for mobile */
   .moon {
     top: 20px;
-    right: 50%;
-    transform: translateX(50%);
+    right: 5%;
+    transform: none;
     width: 100px;
     height: 100px;
   }
@@ -205,6 +206,7 @@ html, body {
   .product-card {
     width: 90%;
     max-width: 320px;
+    margin: 0 auto;
     padding: 1rem;
   }
 
