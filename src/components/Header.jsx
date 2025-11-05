@@ -11,25 +11,28 @@ const Header = () => {
 
   return (
     <header className="site-header">
+      {/* Left side: Logo + SALE badge */}
       <div className="logo-container">
         <div className="logo">
           MoonLight
           <span className="sale-badge">SALE</span>
         </div>
+      </div>
 
-        {/* Burger menu for mobile */}
+      {/* Right side: Nav + Burger */}
+      <div className="header-right">
+        <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <a href="/">Home</a>
+          <a href="/checkout">Checkout</a>
+          <a href="/contact">Contact</a>
+        </nav>
+
         <div className="burger-menu" onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
-
-      <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <a href="/">Home</a>
-        <a href="/checkout">Checkout</a>
-        <a href="/contact">Contact</a>
-      </nav>
     </header>
   );
 };

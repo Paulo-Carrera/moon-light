@@ -7,7 +7,17 @@
   color: white;
   position: relative;
   z-index: 2;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 /* Glowing MoonLight title */
@@ -45,7 +55,8 @@
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.4rem; /* bump this up from default */
   transition: all 0.3s ease;
 }
 
