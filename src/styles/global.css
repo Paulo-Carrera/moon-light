@@ -40,8 +40,8 @@ html, body {
 
 /* Star Cluster */
 @keyframes twinkle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.2); }
 }
 
 .star {
@@ -50,16 +50,33 @@ html, body {
   border-radius: 50%;
   width: 2px;
   height: 2px;
-  box-shadow:
-    50px 80px white,
-    120px 150px white,
-    200px 100px white,
-    300px 200px white,
-    400px 50px white,
-    500px 180px white;
   z-index: 1;
   animation: twinkle 4s infinite ease-in-out;
-  animation-delay: 1s;
+}
+
+/* Shooting Star */
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.shooting-star {
+  position: absolute;
+  top: 0;
+  left: -200px;
+  width: 2px;
+  height: 2px;
+  background: white;
+  box-shadow: 0 0 6px white;
+  border-radius: 50%;
+  animation: shoot 1.5s ease-in-out forwards;
+  z-index: 2;
 }
 
 /* Responsive Layout for Mobile */
