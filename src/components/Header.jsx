@@ -14,7 +14,9 @@ const Header = () => {
       {/* Left side: Logo + SALE badge */}
       <div className="logo-container">
         <div className="logo">
+          <a href="/">
           MoonLight
+          </a>
           <span className="sale-badge">SALE</span>
         </div>
       </div>
