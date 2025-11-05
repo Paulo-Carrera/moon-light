@@ -22,9 +22,7 @@ const Checkout = () => {
     const form = e.target;
 
     try {
-      // const response = await fetch('http://localhost:4242/create-checkout-session',
-
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/create-checkout-session`, {       
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/create-checkout-session`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -48,165 +46,117 @@ const Checkout = () => {
   return (
     <div className="gradient-wrapper">
       <div className="star"></div>
-    <div>
-      <h1 style={{ textAlign: 'center' }}>Checkout</h1>
+      <div>
+        <h1 style={{ textAlign: 'center', color: 'white', fontSize: '2.5rem', marginBottom: '2rem' }}>Checkout</h1>
 
-      <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: '2rem auto' }}>
-        <label>
-          Product:
-          <select
-            name="product"
-            value={selectedProductId}
-            onChange={(e) => setSelectedProductId(e.target.value)}
-            required
-            style={{ display: 'block', width: '100%', marginBottom: '1rem' }}
-          >
-            <option value="">-- Select a product --</option>
-            {products.map((product) => (
-              <option key={product.id} value={product.id}>
-                {product.name} (${product.price})
-              </option>
-            ))}
-          </select>
-        </label>
-
-        {selectedProduct && (
-          <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-            <img
-              src={selectedProduct.image}
-              alt={selectedProduct.name}
-              style={{ width: '200px', borderRadius: '8px' }}
-            />
-            <p>{selectedProduct.description}</p>
-          </div>
-        )}
-
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="you@example.com"
-            style={{
-              display: 'block',
-              width: '100%',
-              marginBottom: '1rem',
-              padding: '0.5rem',
-              borderRadius: '6px',
-              border: '1px solid #ccc',
-            }}
-          />
-        </label>
-
-        <label>
-          Full Name:
-          <input
-            type="text"
-            name="shippingName"
-            required
-            placeholder="John Doe"
-            style={{
-              display: 'block',
-              width: '100%',
-              marginBottom: '1rem',
-              padding: '0.5rem',
-              borderRadius: '6px',
-              border: '1px solid #ccc',
-            }}
-          />
-        </label>
-
-        <label>
-          Street Address:
-          <input
-            type="text"
-            name="shippingAddressLine1"
-            required
-            placeholder="123 Main St"
-            style={{
-              display: 'block',
-              width: '100%',
-              marginBottom: '1rem',
-              padding: '0.5rem',
-              borderRadius: '6px',
-              border: '1px solid #ccc',
-            }}
-          />
-        </label>
-
-        <label>
-          City:
-          <input
-            type="text"
-            name="shippingCity"
-            required
-            placeholder="Los Angeles"
-            style={{
-              display: 'block',
-              width: '100%',
-              marginBottom: '1rem',
-              padding: '0.5rem',
-              borderRadius: '6px',
-              border: '1px solid #ccc',
-            }}
-          />
-        </label>
-
-        <label>
-          State:
-          <input
-            type="text"
-            name="shippingState"
-            required
-            placeholder="CA"
-            style={{
-              display: 'block',
-              width: '100%',
-              marginBottom: '1rem',
-              padding: '0.5rem',
-              borderRadius: '6px',
-              border: '1px solid #ccc',
-            }}
-          />
-        </label>
-
-        <label>
-          ZIP Code:
-          <input
-            type="text"
-            name="shippingPostalCode"
-            required
-            placeholder="90001"
-            style={{
-              display: 'block',
-              width: '100%',
-              marginBottom: '1.5rem',
-              padding: '0.5rem',
-              borderRadius: '6px',
-              border: '1px solid #ccc',
-            }}
-          />
-        </label>
-
-        <button
-          type="submit"
+        <form
+          onSubmit={handleSubmit}
           style={{
-            backgroundColor: '#0070f3',
+            maxWidth: '700px',
+            margin: '0 auto',
+            padding: '2rem',
+            background: 'transparent',
             color: 'white',
-            padding: '0.5rem 1rem',
-            border: 'none',
-            borderRadius: '6px',
-            cursor: 'pointer',
           }}
-          disabled={!selectedProduct}
         >
-          Buy Now
-        </button>
-      </form>
-    </div>
+          <label style={labelStyle}>
+            Product:
+            <select
+              name="product"
+              value={selectedProductId}
+              onChange={(e) => setSelectedProductId(e.target.value)}
+              required
+              style={inputStyle}
+            >
+              <option value="">-- Select a product --</option>
+              {products.map((product) => (
+                <option key={product.id} value={product.id}>
+                  {product.name} (${product.price})
+                </option>
+              ))}
+            </select>
+          </label>
+
+          {selectedProduct && (
+            <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+              <img
+                src={selectedProduct.image}
+                alt={selectedProduct.name}
+                style={{ width: '200px', borderRadius: '8px' }}
+              />
+              <p>{selectedProduct.description}</p>
+            </div>
+          )}
+
+          <label style={labelStyle}>
+            Email:
+            <input type="email" name="email" required placeholder="you@example.com" style={inputStyle} />
+          </label>
+
+          <label style={labelStyle}>
+            Full Name:
+            <input type="text" name="shippingName" required placeholder="John Doe" style={inputStyle} />
+          </label>
+
+          <label style={labelStyle}>
+            Street Address:
+            <input type="text" name="shippingAddressLine1" required placeholder="123 Main St" style={inputStyle} />
+          </label>
+
+          <label style={labelStyle}>
+            City:
+            <input type="text" name="shippingCity" required placeholder="Los Angeles" style={inputStyle} />
+          </label>
+
+          <label style={labelStyle}>
+            State:
+            <input type="text" name="shippingState" required placeholder="CA" style={inputStyle} />
+          </label>
+
+          <label style={labelStyle}>
+            ZIP Code:
+            <input type="text" name="shippingPostalCode" required placeholder="90001" style={inputStyle} />
+          </label>
+
+          <button
+            type="submit"
+            style={{
+              backgroundColor: '#3a0066',
+              color: 'white',
+              padding: '1rem 2rem',
+              fontSize: '1.1rem',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              boxShadow: '0 0 10px rgba(58, 0, 102, 0.6)',
+              transition: 'all 0.3s ease',
+              width: '100%',
+            }}
+            disabled={!selectedProduct}
+          >
+            Buy Now
+          </button>
+        </form>
+      </div>
     </div>
   );
+};
+
+const labelStyle = {
+  display: 'block',
+  marginBottom: '0.5rem',
+  fontWeight: 'bold',
+  fontSize: '1.1rem',
+};
+
+const inputStyle = {
+  display: 'block',
+  width: '100%',
+  marginBottom: '1.5rem',
+  padding: '1rem',
+  fontSize: '1rem',
+  borderRadius: '8px',
+  border: '1px solid #ccc',
 };
 
 export default Checkout;
