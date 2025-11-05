@@ -1,4 +1,3 @@
-// src/components/Footer.jsx
 import './Footer.css';
 
 export default function Footer() {
@@ -31,7 +30,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Product Pulse. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} MoonLight. All rights reserved.</p>
       </div>
     </footer>
   );
