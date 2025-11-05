@@ -14,7 +14,7 @@ const Header = () => {
       {/* Left side: Logo + SALE badge */}
       <div className="logo-container">
         <div className="logo">
-          <a href="/">
+          <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           MoonLight
           </a>
           <span className="sale-badge">SALE</span>
