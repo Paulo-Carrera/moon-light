@@ -3,24 +3,22 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  background: transparent;
+  background: linear-gradient(to right, #1a0033, #3a0066);
   color: white;
   position: relative;
   z-index: 2;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
+/* Glowing MoonLight title */
 .logo {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  position: relative;
+  color: #ffffff;
+  text-shadow: 0 0 10px #ffffff, 0 0 20px #fd746c, 0 0 30px #ffb88c;
 }
 
+/* SALE badge */
 .sale-badge {
   margin-left: 0.5rem;
   background: #ff4d4d;
@@ -38,12 +36,25 @@
   50% { transform: scale(1.1); opacity: 0.8; }
 }
 
+/* Nav links with glow on hover */
 .nav-links {
   display: flex;
   gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
+.nav-links a:hover {
+  text-shadow: 0 0 8px #ffffff, 0 0 12px #fd746c;
+  transform: scale(1.05);
+}
+
+/* Burger menu */
 .burger-menu {
   display: none;
   flex-direction: column;
@@ -65,7 +76,7 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(26, 0, 51, 0.95);
     flex-direction: column;
     align-items: center;
     padding: 1rem 0;
