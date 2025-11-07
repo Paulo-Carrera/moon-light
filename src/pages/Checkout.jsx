@@ -5,9 +5,11 @@ import products from '../data/products.js';
 const Checkout = () => {
   const location = useLocation();
   const initialProduct = location.state?.product || null;
+  const initialQuantity = location.state?.quantity || 1;
 
   const [selectedProductId, setSelectedProductId] = useState(initialProduct?.id || '');
-  const selectedProduct = products.find(p => p.id === parseInt(selectedProductId)) || initialProduct;
+  const selectedProduct = products.find(p => p.id === selectedProductId) || initialProduct;
+  const [quantity, setQuantity] = useState(initialQuantity);
 
   useEffect(() => {
     if (selectedProduct) {
@@ -27,6 +29,7 @@ const Checkout = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           product: selectedProduct,
+          quantity,
           customerEmail: form.email.value,
           shippingName: form.shippingName.value,
           shippingAddressLine1: form.shippingAddressLine1.value,
@@ -87,6 +90,19 @@ const Checkout = () => {
               <p>{selectedProduct.description}</p>
             </div>
           )}
+
+          <label style={labelStyle}>
+            Quantity:
+            <input
+              type="number"
+              name="quantity"
+              min="1"
+              max={selectedProduct?.maxQuantity || 10}
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+              style={inputStyle}
+            />
+          </label>
 
           <label style={labelStyle}>
             Email:
