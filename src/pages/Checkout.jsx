@@ -11,6 +11,8 @@ const Checkout = () => {
   const selectedProduct = products.find(p => p.id === selectedProductId) || initialProduct;
   const [quantity, setQuantity] = useState(initialQuantity);
 
+  console.log('Loaded products: ', products);
+
   useEffect(() => {
     if (selectedProduct) {
       console.log('Selected product:', selectedProduct.name);
