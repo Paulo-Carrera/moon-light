@@ -1,15 +1,28 @@
 /* src/pages/Success.css */
 
 .success-page {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  max-width: 480px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.1),
+    0 0 12px rgba(173, 216, 230, 0.3),
+    0 0 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   font-family: 'Courier New', Courier, monospace;
-  background-color: #fdfdfd;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   color: #333;
+  position: relative;
+}
+
+.success-page::before {
+  content: '🌕';
+  position: absolute;
+  top: -1.2rem;
+  right: -1.2rem;
+  font-size: 2rem;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
 }
 
 .success-page h1 {
@@ -78,16 +91,20 @@
     background: white;
   }
 
+  .gradient-wrapper,
+  .star,
+  .success-page::before,
+  .print-button,
+  .success-page a {
+    display: none !important;
+  }
+
   .success-page {
+    background: white;
     box-shadow: none;
     border: none;
     margin: 0;
     padding: 0;
-  }
-
-  .success-page a,
-  .print-button {
-    display: none;
+    color: #000;
   }
 }
-
