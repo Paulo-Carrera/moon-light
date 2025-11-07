@@ -6,8 +6,6 @@ import cors from 'cors';
 
 import { getSupabaseClient } from './supabase/client.js';
 import { insertOrder } from './supabase/insertOrder.js';
-// import contactRoute from './routes/contact.js'; // 🔒 Archived for future use
-// import { sendConfirmationEmail } from './mailer/mailer.js'; // 🔒 Archived for future use
 
 const app = express();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -23,7 +21,7 @@ app.use(cors({
     if (
       !origin ||
       allowedOrigins.includes(origin) ||
-      origin.includes('vercel.app') // ✅ Allow all Vercel preview URLs
+      origin.includes('vercel.app')
     ) {
       callback(null, true);
     } else {
@@ -45,7 +43,7 @@ app.use(express.json());
 app.post('/create-checkout-session', async (req, res) => {
   const {
     product,
-    quantity = 1, // ✅ NEW: fallback to 1
+    quantity = 1,
     customerEmail,
     shippingName,
     shippingAddressLine1,
@@ -56,7 +54,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
   console.log('📦 Incoming checkout request:', {
     product,
-    quantity, // ✅ NEW: log quantity
+    quantity,
     customerEmail,
     shippingName,
     shippingAddressLine1,
@@ -64,6 +62,8 @@ app.post('/create-checkout-session', async (req, res) => {
     shippingState,
     shippingPostalCode,
   });
+
+  const totalPrice = product.price * quantity;
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -84,14 +84,14 @@ app.post('/create-checkout-session', async (req, res) => {
             },
             unit_amount: Math.round(product.price * 100),
           },
-          quantity, // ✅ NEW: dynamic quantity
+          quantity,
         },
       ],
       success_url: `${process.env.FRONTEND_URL.split(',')[0]}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.FRONTEND_URL.split(',')[0]}/cancel`,
       metadata: {
         productName: product.name,
-        quantity: String(quantity), // ✅ NEW: store in metadata
+        quantity: String(quantity),
         shippingName,
         shippingAddressLine1,
         shippingCity,
@@ -104,7 +104,8 @@ app.post('/create-checkout-session', async (req, res) => {
 
     await insertOrder({
       product_name: product.name,
-      quantity, // ✅ NEW: store in Supabase
+      quantity,
+      total_price: totalPrice,
       status: 'initiated',
       email: customerEmail,
       stripe_session_id: session.id,
@@ -123,7 +124,8 @@ app.post('/create-checkout-session', async (req, res) => {
 
     await insertOrder({
       product_name: product?.name || 'unknown',
-      quantity: 1, // ✅ fallback
+      quantity: 1,
+      total_price: product?.price || 0,
       status: 'failed',
       email: customerEmail || 'unknown',
       stripe_session_id: 'none',
@@ -202,15 +204,6 @@ app.post('/webhook', express.raw({ type: 'application/json' }), async (req, res)
       } else {
         console.log('✅ Order updated to completed');
       }
-
-      // if (email !== 'unknown') {
-      //   try {
-      //     await sendConfirmationEmail(email, product_name);
-      //     console.log('📨 Confirmation email sent');
-      //   } catch (err) {
-      //     console.error('❌ Email send error:', err.message);
-      //   }
-      // }
     } else {
       console.warn('⚠️ No matching order found for session:', sessionId);
     }
