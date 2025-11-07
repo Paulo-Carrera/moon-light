@@ -45,6 +45,7 @@ app.use(express.json());
 app.post('/create-checkout-session', async (req, res) => {
   const {
     product,
+    quantity = 1, // ✅ NEW: fallback to 1
     customerEmail,
     shippingName,
     shippingAddressLine1,
@@ -55,6 +56,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
   console.log('📦 Incoming checkout request:', {
     product,
+    quantity, // ✅ NEW: log quantity
     customerEmail,
     shippingName,
     shippingAddressLine1,
@@ -62,8 +64,6 @@ app.post('/create-checkout-session', async (req, res) => {
     shippingState,
     shippingPostalCode,
   });
-
-  console.log('🌐 FRONTEND_URL:', process.env.FRONTEND_URL);
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -84,13 +84,14 @@ app.post('/create-checkout-session', async (req, res) => {
             },
             unit_amount: Math.round(product.price * 100),
           },
-          quantity: 1,
+          quantity, // ✅ NEW: dynamic quantity
         },
       ],
       success_url: `${process.env.FRONTEND_URL.split(',')[0]}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.FRONTEND_URL.split(',')[0]}/cancel`,
       metadata: {
         productName: product.name,
+        quantity: String(quantity), // ✅ NEW: store in metadata
         shippingName,
         shippingAddressLine1,
         shippingCity,
@@ -103,6 +104,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
     await insertOrder({
       product_name: product.name,
+      quantity, // ✅ NEW: store in Supabase
       status: 'initiated',
       email: customerEmail,
       stripe_session_id: session.id,
@@ -121,6 +123,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
     await insertOrder({
       product_name: product?.name || 'unknown',
+      quantity: 1, // ✅ fallback
       status: 'failed',
       email: customerEmail || 'unknown',
       stripe_session_id: 'none',
