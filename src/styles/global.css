@@ -102,3 +102,25 @@ html, body {
     text-align: center;
   }
 }
+
+/* Size dropdown and quantity input styling */
+.size-dropdown,
+.quantity-input {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid white;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Bulk discount badge */
+.bulk-discount {
+  margin-top: 0.5rem;
+  color: #00ffcc;
+  font-weight: bold;
+  text-shadow: 0 0 6px #00ffcc;
+}
