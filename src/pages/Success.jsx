@@ -34,6 +34,8 @@ export default function Success() {
         <h2>✅ Thank you for your order!</h2>
         <p><strong>Date:</strong> {formattedDate}</p>
         <p><strong>Product:</strong> {order.product_name}</p>
+        <p><strong>Quantity:</strong> {order.quantity}</p>
+        <p><strong>Total Price:</strong> ${order.total_price?.toFixed(2) || 'N/A'}</p>
         <p><strong>Email:</strong> {order.email || 'Not provided'}</p>
         <p><strong>Status:</strong> {order.status}</p>
         <p><strong>Shipping to:</strong> {order.shipping_name}</p>

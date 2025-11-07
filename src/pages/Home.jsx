@@ -8,7 +8,6 @@ import '../styles/global.css';
 const Home = () => {
   const navigate = useNavigate();
 
-  // State for selected size and quantity
   const [selectedId, setSelectedId] = useState(products[0].id);
   const selectedProduct = products.find(p => p.id === selectedId);
   const [quantity, setQuantity] = useState(1);
@@ -22,9 +21,7 @@ const Home = () => {
     return (rounded - 0.01).toFixed(2);
   };
 
-  const finalPrice = quantity >= 2
-    ? selectedProduct.price * quantity * 0.9
-    : selectedProduct.price * quantity;
+  const finalPrice = selectedProduct.price * quantity;
 
   return (
     <div>
@@ -65,10 +62,6 @@ const Home = () => {
               <span className="price-original">${formatSalePrice(selectedProduct.price * 2)}</span>{' '}
               <span className="price-sale">${formatSalePrice(finalPrice)}</span>
             </p>
-
-            {quantity >= 2 && (
-              <p className="bulk-discount">Bulk discount applied!</p>
-            )}
 
             <button
               onClick={handleBuyNow}
