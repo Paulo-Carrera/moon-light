@@ -1,5 +1,5 @@
 export default function Success() {
-  const [searchParams] = useSearchParams();
+  const [searchParams] = searchParams();
   const sessionId = searchParams.get('session_id');
   const [order, setOrder] = useState(null);
 
