@@ -3,6 +3,8 @@ const supabase = getSupabaseClient();
 
 export async function insertOrder({
   product_name,
+  quantity = 1,
+  total_price = null,
   status,
   email,
   stripe_session_id,
@@ -14,6 +16,8 @@ export async function insertOrder({
     .insert([
       {
         product_name,
+        quantity,
+        total_price,
         status,
         email,
         stripe_session_id,
