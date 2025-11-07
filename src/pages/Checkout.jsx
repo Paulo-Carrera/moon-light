@@ -7,11 +7,9 @@ const Checkout = () => {
   const initialProduct = location.state?.product || null;
   const initialQuantity = location.state?.quantity || 1;
 
-  const [selectedProductId, setSelectedProductId] = useState(initialProduct?.id || '');
-  const selectedProduct = products.find(p => p.id === selectedProductId) || initialProduct;
+  const [selectedProductId, setSelectedProductId] = useState(initialProduct?.id || products[0].id);
+  const selectedProduct = products.find(p => p.id === selectedProductId);
   const [quantity, setQuantity] = useState(initialQuantity);
-
-  console.log('Loaded products: ', products);
 
   useEffect(() => {
     if (selectedProduct) {
@@ -73,7 +71,6 @@ const Checkout = () => {
               required
               style={inputStyle}
             >
-              <option value="">-- Select a product --</option>
               {products.map((product) => (
                 <option key={product.id} value={product.id}>
                   {product.name} (${product.price})
