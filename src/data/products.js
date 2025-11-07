@@ -4,7 +4,7 @@ const products = [
     name: 'MoonLight Lamp - 8cm',
     description: 'Compact cosmic glow. Perfect for desks and small spaces.',
     price: 24.99,
-    image: 'https://ae-pic.a1.aliexpress-media.com/kf/S098d5bde9e3d4f5b84fca21210f161caM.jpg_640x640q75.jpg_.avif',
+    image: 'https://relaxusonline.com/cdn/shop/products/518119-Luna-Moon-Lamp_-lifestyle.jpg?v=1755529048',
     size: '8cm',
     maxQuantity: 10
   },
@@ -13,7 +13,7 @@ const products = [
     name: 'MoonLight Lamp - 12cm',
     description: 'Balanced size for bedrooms and cozy corners.',
     price: 29.99,
-    image: 'https://ae-pic.a1.aliexpress-media.com/kf/S098d5bde9e3d4f5b84fca21210f161caM.jpg_640x640q75.jpg_.avif',
+    image: 'https://relaxusonline.com/cdn/shop/products/518119-Luna-Moon-Lamp_-lifestyle.jpg?v=1755529048',
     size: '12cm',
     maxQuantity: 10
   },
@@ -22,7 +22,7 @@ const products = [
     name: 'MoonLight Lamp - 15cm',
     description: 'Larger glow for living rooms or statement gifting.',
     price: 34.99,
-    image: 'https://ae-pic.a1.aliexpress-media.com/kf/S098d5bde9e3d4f5b84fca21210f161caM.jpg_640x640q75.jpg_.avif',
+    image: 'https://relaxusonline.com/cdn/shop/products/518119-Luna-Moon-Lamp_-lifestyle.jpg?v=1755529048',
     size: '15cm',
     maxQuantity: 10
   }
