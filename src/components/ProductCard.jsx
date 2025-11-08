@@ -8,6 +8,9 @@ const ProductCard = () => {
   const selectedProduct = products.find(p => p.id === selectedId);
   const [quantity, setQuantity] = useState(1);
 
+  // Debug: Confirm selected product and price
+  console.log('🧪 Selected Product:', selectedProduct);
+
   const handleBuyClick = async () => {
     try {
       const orderData = {
