@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ProductCard.css';
 import '../styles/global.css';
-import products from '../data/products.js'; // Import all sizes
+import products from '../data/products.js';
 
 const ProductCard = () => {
   const [selectedId, setSelectedId] = useState(products[0].id);
@@ -39,9 +39,6 @@ const ProductCard = () => {
     }
   };
 
-  const markup = selectedProduct.price < 50 ? 2 : 1.5;
-  const raw = selectedProduct.price * markup + 1;
-  const originalPrice = `${Math.floor(raw / 10) * 10 - 0.01}`;
   const finalPrice = quantity >= 2
     ? selectedProduct.price * quantity * 0.9
     : selectedProduct.price * quantity;
@@ -85,7 +82,6 @@ const ProductCard = () => {
         />
 
         <div className="price-group">
-          <span className="original-price">${originalPrice}</span>
           <span className="product-price">${finalPrice.toFixed(2)}</span>
         </div>
 
