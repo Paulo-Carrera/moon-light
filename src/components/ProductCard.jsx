@@ -66,6 +66,7 @@ const ProductCard = () => {
         <label htmlFor="size-select">Choose size:</label>
         <select
           id="size-select"
+          className="size-dropdown"
           value={selectedId}
           onChange={(e) => setSelectedId(e.target.value)}
         >
@@ -77,6 +78,7 @@ const ProductCard = () => {
         <label htmlFor="quantity-input">Quantity:</label>
         <input
           id="quantity-input"
+          className="quantity-input"
           type="number"
           min="1"
           max={selectedProduct.maxQuantity}

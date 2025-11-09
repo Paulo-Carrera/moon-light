@@ -109,12 +109,22 @@ html, body {
   margin-top: 0.5rem;
   padding: 0.5rem;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  background-color: #1a1a1a;       /* Dark background for visibility */
+  color: white;                    /* Bright text */
   border: 1px solid white;
   font-family: inherit;
   width: 100%;
   box-sizing: border-box;
+  appearance: none;                /* Remove native styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Optional: glow on focus */
+.size-dropdown:focus,
+.quantity-input:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
 /* Bulk discount badge */
