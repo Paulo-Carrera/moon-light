@@ -46,7 +46,7 @@ const Home = () => {
   const selectedProduct = products.find(p => p.id === selectedId);
   const basePrice = priceMap[selectedProduct.size];
   const finalPrice = basePrice * quantity;
-  const compareAtPrice = basePrice + 10;
+  const compareAtPrice = (basePrice + 10) * quantity;
 
   const handleBuyNow = () => {
     navigate('/checkout', {
@@ -92,11 +92,11 @@ const Home = () => {
               className="quantity-input"
             />
 
-<p>
-  <span className="price-unit">Unit Price: ${basePrice.toFixed(2)}</span><br />
-  <span className="price-original">Compare at: ${(compareAtPrice * quantity).toFixed(2)}</span><br />
-  <span className="price-sale">Total: ${finalPrice.toFixed(2)}</span>
-</p>
+            <p>
+              <span className="price-unit">Unit Price: ${basePrice.toFixed(2)}</span><br />
+              <span className="price-original">Compare at: ${compareAtPrice.toFixed(2)}</span><br />
+              <span className="price-sale">Total: ${finalPrice.toFixed(2)}</span>
+            </p>
 
             <button
               onClick={handleBuyNow}
