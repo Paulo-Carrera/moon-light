@@ -46,11 +46,7 @@ const Home = () => {
   const selectedProduct = products.find(p => p.id === selectedId);
   const basePrice = priceMap[selectedProduct.size];
   const finalPrice = basePrice * quantity;
-
-  const formatSalePrice = (price) => {
-    const rounded = Math.ceil(price / 10) * 10;
-    return (rounded - 0.01).toFixed(2);
-  };
+  const compareAtPrice = basePrice + 10;
 
   const handleBuyNow = () => {
     navigate('/checkout', {
@@ -66,6 +62,7 @@ const Home = () => {
       <main className="home-main gradient-wrapper">
         <div className="moon"></div>
         <div className="star"></div>
+        <h2 style={{ color: 'orange', textAlign: 'center' }}>🔥 This is the live Home.jsx</h2>
         <h1 className="home-title">Featured Product</h1>
         <div className="product-grid">
           <div className="product-card">
@@ -101,10 +98,14 @@ const Home = () => {
               className="quantity-input"
             />
 
-<p>
-  <span className="price-original">${formatSalePrice(basePrice * 2)}</span>{' '}
-  <span className="price-sale">${formatSalePrice(finalPrice)}</span>
-</p>
+            <p>
+              <span className="price-original">${compareAtPrice.toFixed(2)}</span>{' '}
+              <span className="price-sale">${basePrice.toFixed(2)}</span>
+            </p>
+
+            <p style={{ color: 'red', fontSize: '0.9rem' }}>
+              Confirmed Display Price: ${basePrice.toFixed(2)}
+            </p>
 
             <button
               onClick={handleBuyNow}
