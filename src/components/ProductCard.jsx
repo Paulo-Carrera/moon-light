@@ -95,6 +95,11 @@ const ProductCard = () => {
         <h2 className="product-name">{selectedProduct.name}</h2>
         <p className="product-description">{selectedProduct.description}</p>
 
+        {/* 🔍 Debug block for live price check */}
+        <p style={{ color: 'lime', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+          Debug: Price for {selectedProduct.size} is ${basePrice}
+        </p>
+
         <label htmlFor="size-select">Choose size:</label>
         <select
           id="size-select"
