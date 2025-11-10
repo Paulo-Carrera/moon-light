@@ -101,10 +101,10 @@ const Home = () => {
               className="quantity-input"
             />
 
-            <p>
-              <span className="price-original">${formatSalePrice(basePrice * 2)}</span>{' '}
-              <span className="price-sale">${formatSalePrice(finalPrice)}</span>
-            </p>
+<p>
+  <span className="price-original">${formatSalePrice(basePrice * 2)}</span>{' '}
+  <span className="price-sale">${formatSalePrice(finalPrice)}</span>
+</p>
 
             <button
               onClick={handleBuyNow}
