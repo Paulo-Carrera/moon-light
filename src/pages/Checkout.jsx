@@ -159,6 +159,7 @@ const Checkout = () => {
           {loading && (
             <div className="spinner-container">
               <div className="spinner"></div>
+              <h2 className="spinner-heading">Processing...</h2>
               <p className="spinner-text">Creating Stripe session...</p>
             </div>
           )}
