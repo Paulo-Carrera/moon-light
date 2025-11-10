@@ -17,7 +17,7 @@ const CancelPage = () => {
     <div className="gradient-wrapper">
       <div className="star"></div>
     <div style={styles.container}>
-      <div style={styles.spinner}></div>
+      <div className="spinner"></div>
       <h2 style={styles.heading}>Payment Canceled</h2>
       <p style={styles.text}>No worries — redirecting you back to products...</p>
     </div>
@@ -43,14 +43,6 @@ const styles = {
     marginTop: '0.5rem',
     fontSize: '1rem',
     color: '#666',
-  },
-  spinner: {
-    width: '40px',
-    height: '40px',
-    border: '4px solid #ccc',
-    borderTop: '4px solid #0070f3',
-    borderRadius: '50%',
-    animation: 'spin 1s linear infinite',
   },
 };
 
