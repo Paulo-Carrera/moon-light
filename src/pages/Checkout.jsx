@@ -10,6 +10,7 @@ const Checkout = () => {
   const [selectedProductId, setSelectedProductId] = useState(initialProduct?.id || products[0].id);
   const selectedProduct = products.find(p => p.id === selectedProductId);
   const [quantity, setQuantity] = useState(initialQuantity);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (selectedProduct) {
@@ -22,6 +23,7 @@ const Checkout = () => {
     if (!selectedProduct) return;
 
     const form = e.target;
+    setLoading(true);
 
     try {
       const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/create-checkout-session`, {
@@ -43,6 +45,7 @@ const Checkout = () => {
       window.location.href = data.url;
     } catch (err) {
       console.error('Stripe checkout error:', err);
+      setLoading(false);
     }
   };
 
@@ -135,6 +138,7 @@ const Checkout = () => {
 
           <button
             type="submit"
+            disabled={loading || !selectedProduct}
             style={{
               backgroundColor: '#3a0066',
               color: 'white',
@@ -142,15 +146,22 @@ const Checkout = () => {
               fontSize: '1.1rem',
               border: 'none',
               borderRadius: '8px',
-              cursor: 'pointer',
+              cursor: loading ? 'not-allowed' : 'pointer',
               boxShadow: '0 0 10px rgba(58, 0, 102, 0.6)',
               transition: 'all 0.3s ease',
               width: '100%',
+              opacity: loading ? 0.6 : 1,
             }}
-            disabled={!selectedProduct}
           >
-            Buy Now
+            {loading ? 'Processing...' : 'Buy Now'}
           </button>
+
+          {loading && (
+            <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+              <div className="spinner"></div>
+              <p style={{ marginTop: '0.5rem', color: '#ccc' }}>Creating Stripe session...</p>
+            </div>
+          )}
         </form>
       </div>
     </div>

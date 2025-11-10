@@ -42,41 +42,19 @@ const Home = () => {
 
   const [selectedId, setSelectedId] = useState(products[0].id);
   const [quantity, setQuantity] = useState(1);
-  const [loading, setLoading] = useState(false);
 
   const selectedProduct = products.find(p => p.id === selectedId);
   const basePrice = priceMap[selectedProduct.size];
   const finalPrice = basePrice * quantity;
   const compareAtPrice = (basePrice + 10) * quantity;
 
-  const handleBuyNow = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          product: {
-            name: selectedProduct.name,
-            price: basePrice,
-            image: selectedProduct.image,
-          },
-          quantity,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (data.sessionId) {
-        window.location.href = `https://checkout.stripe.com/pay/${data.sessionId}`;
-      } else {
-        console.error('No session ID returned');
-        setLoading(false);
-      }
-    } catch (err) {
-      console.error('Checkout error:', err);
-      setLoading(false);
-    }
+  const handleBuyNow = () => {
+    navigate('/checkout', {
+      state: {
+        product: { ...selectedProduct, price: basePrice },
+        quantity,
+      },
+    });
   };
 
   return (
@@ -123,14 +101,9 @@ const Home = () => {
             <button
               onClick={handleBuyNow}
               className="buy-button"
-              disabled={loading}
             >
-              {loading ? 'Processing...' : 'Buy Now'}
+              Buy Now
             </button>
-
-            {loading && (
-              <div className="spinner">Creating Stripe session...</div>
-            )}
           </div>
         </div>
       </main>
