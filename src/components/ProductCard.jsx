@@ -42,6 +42,7 @@ const ProductCard = () => {
     }
   };
 
+  const compareAtPrice = selectedProduct.price + 10;
   const finalPrice = quantity >= 2
     ? selectedProduct.price * quantity * 0.9
     : selectedProduct.price * quantity;
@@ -87,6 +88,7 @@ const ProductCard = () => {
         />
 
         <div className="price-group">
+          <span className="original-price">${compareAtPrice.toFixed(2)}</span>
           <span className="product-price">${finalPrice.toFixed(2)}</span>
         </div>
 
