@@ -62,18 +62,12 @@ const Home = () => {
       <main className="home-main gradient-wrapper">
         <div className="moon"></div>
         <div className="star"></div>
-        <h2 style={{ color: 'orange', textAlign: 'center' }}>🔥 This is the live Home.jsx</h2>
         <h1 className="home-title">Featured Product</h1>
         <div className="product-grid">
           <div className="product-card">
             <img src={selectedProduct.image} alt={selectedProduct.name} className="product-image" />
             <h2>{selectedProduct.name}</h2>
             <p>{selectedProduct.description}</p>
-
-            {/* 🔍 Debug block for live price check */}
-            <p style={{ color: 'lime', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
-              Debug: Price for {selectedProduct.size} is ${basePrice}
-            </p>
 
             <label htmlFor="size-select">Choose size:</label>
             <select
@@ -101,10 +95,6 @@ const Home = () => {
             <p>
               <span className="price-original">${compareAtPrice.toFixed(2)}</span>{' '}
               <span className="price-sale">${basePrice.toFixed(2)}</span>
-            </p>
-
-            <p style={{ color: 'red', fontSize: '0.9rem' }}>
-              Confirmed Display Price: ${basePrice.toFixed(2)}
             </p>
 
             <button
