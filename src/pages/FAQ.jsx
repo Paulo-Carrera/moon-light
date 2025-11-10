@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     question: 'Can I get a refund?',
-    answer: 'Yes, within 30 days of delivery. Items must be unused and in original packaging.',
+    answer: 'We do not offer refunds or returns. All sales are final. Please double-check your order before checkout.',
   },
   {
     question: 'Is checkout secure?',
