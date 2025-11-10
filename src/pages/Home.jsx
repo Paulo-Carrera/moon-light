@@ -92,10 +92,11 @@ const Home = () => {
               className="quantity-input"
             />
 
-            <p>
-              <span className="price-original">${compareAtPrice.toFixed(2)}</span>{' '}
-              <span className="price-sale">${basePrice.toFixed(2)}</span>
-            </p>
+<p>
+  <span className="price-unit">Unit Price: ${basePrice.toFixed(2)}</span><br />
+  <span className="price-original">Compare at: ${(compareAtPrice * quantity).toFixed(2)}</span><br />
+  <span className="price-sale">Total: ${finalPrice.toFixed(2)}</span>
+</p>
 
             <button
               onClick={handleBuyNow}
