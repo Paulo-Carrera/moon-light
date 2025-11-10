@@ -32,7 +32,7 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f9f9f9',
+    backgroundColor: 'transparent',
   },
   heading: {
     marginTop: '1rem',

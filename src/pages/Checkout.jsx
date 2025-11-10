@@ -157,9 +157,9 @@ const Checkout = () => {
           </button>
 
           {loading && (
-            <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+            <div className="spinner-container">
               <div className="spinner"></div>
-              <p style={{ marginTop: '0.5rem', color: '#ccc' }}>Creating Stripe session...</p>
+              <p className="spinner-text">Creating Stripe session...</p>
             </div>
           )}
         </form>
