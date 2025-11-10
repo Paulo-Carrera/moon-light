@@ -1,27 +1,65 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header.jsx';
-import products from '../data/products.js';
 import './Home.css';
 import '../styles/global.css';
+
+const priceMap = {
+  '8cm': 24.99,
+  '12cm': 29.99,
+  '15cm': 34.99,
+};
+
+const products = [
+  {
+    id: 'moonlight-8cm',
+    size: '8cm',
+    name: 'MoonLight Lamp - 8cm',
+    description: 'Compact cosmic glow. Perfect for desks and small spaces.',
+    image: 'https://relaxusonline.com/cdn/shop/products/518119-Luna-Moon-Lamp_-lifestyle.jpg?v=1755529048',
+    maxQuantity: 10,
+  },
+  {
+    id: 'moonlight-12cm',
+    size: '12cm',
+    name: 'MoonLight Lamp - 12cm',
+    description: 'Balanced size for bedrooms and cozy corners.',
+    image: 'https://relaxusonline.com/cdn/shop/products/518119-Luna-Moon-Lamp_-lifestyle.jpg?v=1755529048',
+    maxQuantity: 10,
+  },
+  {
+    id: 'moonlight-15cm',
+    size: '15cm',
+    name: 'MoonLight Lamp - 15cm',
+    description: 'Larger glow for living rooms or statement gifting.',
+    image: 'https://relaxusonline.com/cdn/shop/products/518119-Luna-Moon-Lamp_-lifestyle.jpg?v=1755529048',
+    maxQuantity: 10,
+  },
+];
 
 const Home = () => {
   const navigate = useNavigate();
 
   const [selectedId, setSelectedId] = useState(products[0].id);
-  const selectedProduct = products.find(p => p.id === selectedId);
   const [quantity, setQuantity] = useState(1);
 
-  const handleBuyNow = () => {
-    navigate('/checkout', { state: { product: selectedProduct, quantity } });
-  };
+  const selectedProduct = products.find(p => p.id === selectedId);
+  const basePrice = priceMap[selectedProduct.size];
+  const finalPrice = basePrice * quantity;
 
   const formatSalePrice = (price) => {
     const rounded = Math.ceil(price / 10) * 10;
     return (rounded - 0.01).toFixed(2);
   };
 
-  const finalPrice = selectedProduct.price * quantity;
+  const handleBuyNow = () => {
+    navigate('/checkout', {
+      state: {
+        product: { ...selectedProduct, price: basePrice },
+        quantity,
+      },
+    });
+  };
 
   return (
     <div>
@@ -34,6 +72,11 @@ const Home = () => {
             <img src={selectedProduct.image} alt={selectedProduct.name} className="product-image" />
             <h2>{selectedProduct.name}</h2>
             <p>{selectedProduct.description}</p>
+
+            {/* 🔍 Debug block for live price check */}
+            <p style={{ color: 'lime', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+              Debug: Price for {selectedProduct.size} is ${basePrice}
+            </p>
 
             <label htmlFor="size-select">Choose size:</label>
             <select
@@ -59,7 +102,7 @@ const Home = () => {
             />
 
             <p>
-              <span className="price-original">${formatSalePrice(selectedProduct.price * 2)}</span>{' '}
+              <span className="price-original">${formatSalePrice(basePrice * 2)}</span>{' '}
               <span className="price-sale">${formatSalePrice(finalPrice)}</span>
             </p>
 
