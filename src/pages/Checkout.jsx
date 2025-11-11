@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import products from '../data/products.js';
 
 const Checkout = () => {
   const location = useLocation();
+  const spinnerRef = useRef(null);
+
   const initialProduct = location.state?.product || null;
   const initialQuantity = location.state?.quantity || 1;
 
@@ -24,6 +26,11 @@ const Checkout = () => {
 
     const form = e.target;
     setLoading(true);
+
+    // Scroll to spinner after DOM updates
+    setTimeout(() => {
+      spinnerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
 
     try {
       const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/create-checkout-session`, {
@@ -51,7 +58,7 @@ const Checkout = () => {
 
   return (
     <div className="gradient-wrapper">
-      <div className="star"></div>
+      {!loading && <div className="star"></div>}
       <div>
         <h1 style={{ textAlign: 'center', color: 'white', fontSize: '2.5rem', marginBottom: '2rem' }}>Checkout</h1>
 
@@ -157,7 +164,7 @@ const Checkout = () => {
           </button>
 
           {loading && (
-            <div className="spinner-container">
+            <div className="spinner-container" ref={spinnerRef}>
               <div className="spinner"></div>
               <h2 className="spinner-heading">Processing...</h2>
               <p className="spinner-text">Creating Stripe session...</p>
