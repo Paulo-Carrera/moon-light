@@ -80,17 +80,13 @@ const ProductCard = () => {
 
   return (
     <div className="product-card">
-      <img
-        src={selectedProduct.image}
-        alt={selectedProduct.name}
-        className="product-image"
-        style={{
-          width: '100%',
-          height: '200px',
-          objectFit: 'cover',
-          borderRadius: '8px',
-        }}
-      />
+      <div className="image-wrapper">
+        <img
+          src={selectedProduct.image}
+          alt={selectedProduct.name}
+          className="product-image"
+        />
+      </div>
       <div className="product-info">
         <h2 className="product-name">{selectedProduct.name}</h2>
         <p className="product-description">{selectedProduct.description}</p>
