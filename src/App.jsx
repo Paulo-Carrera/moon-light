@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import Checkout from './pages/Checkout.jsx';
 import CancelPage from './pages/CancelPage.jsx';
@@ -12,11 +13,15 @@ import Terms from './pages/Terms.jsx';
 import Privacy from './pages/Privacy.jsx';
 import About from './pages/About.jsx';
 import FAQ from './pages/FAQ.jsx';
-import Footer from './components/Footer.jsx';
 
 function App() {
   return (
     <div className="app-container">
+      {/* Global stars layer */}
+      <div className="stars-background">
+        <div className="star"></div>
+      </div>
+
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

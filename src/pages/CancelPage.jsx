@@ -8,14 +8,19 @@ const CancelPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate('/');
-    }, 3000); // Redirect after 3 seconds
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [navigate]);
 
   return (
     <div className="gradient-wrapper">
-      <div className="star"></div>
+      {/* Stars layer */}
+      <div className="stars-background">
+        <div className="star"></div>
+      </div>
+
+      {/* Spinner block above stars */}
       <div className="spinner-container">
         <div className="spinner"></div>
         <h2 className="spinner-heading">Payment Canceled</h2>

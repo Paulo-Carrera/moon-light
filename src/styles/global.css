@@ -109,13 +109,13 @@ html, body {
   margin-top: 0.5rem;
   padding: 0.5rem;
   border-radius: 6px;
-  background-color: #1a1a1a;       /* Dark background for visibility */
-  color: white;                    /* Bright text */
+  background-color: #1a1a1a;
+  color: white;
   border: 1px solid white;
   font-family: inherit;
   width: 100%;
   box-sizing: border-box;
-  appearance: none;                /* Remove native styling */
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
@@ -135,8 +135,7 @@ html, body {
   text-shadow: 0 0 6px #00ffcc;
 }
 
-
-
+/* Spinner container */
 .spinner-container {
   display: flex;
   flex-direction: column;
@@ -148,8 +147,12 @@ html, body {
   max-width: 400px;
   margin: 10vh auto;
   box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(6px);
 }
 
+/* Spinner */
 .spinner {
   width: 48px;
   height: 48px;
@@ -158,6 +161,8 @@ html, body {
   border-radius: 50%;
   animation: spin 1s linear infinite;
   box-shadow: 0 0 12px #a855f7;
+  position: relative;
+  z-index: 11;
 }
 
 .spinner-heading {
@@ -178,4 +183,15 @@ html, body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Stars background isolation */
+.stars-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
