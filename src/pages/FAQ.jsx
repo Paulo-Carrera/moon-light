@@ -4,7 +4,7 @@ import './FAQ.css';
 const faqs = [
   {
     question: 'How long does shipping take?',
-    answer: 'Standard shipping takes 5–10 business days. Expedited options are available at checkout.',
+    answer: 'Standard shipping takes 5–10 business days.',
   },
   {
     question: 'Can I get a refund?',

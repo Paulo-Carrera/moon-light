@@ -7,7 +7,6 @@ export default function Shipping() {
       <p>We ship to all 50 U.S. states. Orders are processed within 1–2 business days.</p>
       <ul>
         <li>Standard shipping: 5–10 business days</li>
-        <li>Expedited shipping: 2–4 business days</li>
         <li>Tracking info sent via email</li>
       </ul>
     </div>
