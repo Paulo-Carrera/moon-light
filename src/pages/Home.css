@@ -146,6 +146,11 @@ html, body {
   color: #ffffff;
 }
 
+.price-unit {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
 /* Buy button */
 .buy-button {
   margin-top: 1rem;
@@ -182,11 +187,9 @@ html, body {
     align-items: center;
   }
 
-  /* Keep moon on the right for mobile */
   .moon {
     top: 20px;
     right: 5%;
-    transform: none;
     width: 100px;
     height: 100px;
   }
@@ -208,6 +211,36 @@ html, body {
     max-width: 320px;
     margin: 0 auto;
     padding: 1rem;
+  }
+
+  .product-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .product-card p {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .size-dropdown,
+  .quantity-input {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+
+  .price-unit,
+  .price-original,
+  .price-sale {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
   }
 
   .buy-button {
