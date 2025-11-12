@@ -1,0 +1,139 @@
+/* Checkout container */
+.checkout-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: white;
+}
+
+/* Title */
+.checkout-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Form layout */
+.checkout-form {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.checkout-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Inputs and dropdowns */
+.checkout-input {
+  display: block;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Product preview */
+.product-preview {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.product-image {
+  width: 200px;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+/* Buy button */
+.checkout-button {
+  background-color: #3a0066;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(58, 0, 102, 0.6);
+  transition: all 0.3s ease;
+  width: 100%;
+  opacity: 1;
+}
+
+.checkout-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Spinner block */
+.spinner-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #fff;
+  border-top: 4px solid #3a0066;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-heading {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.spinner-text {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .checkout-container {
+    padding: 1rem;
+  }
+
+  .checkout-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .product-image {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .checkout-input {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .checkout-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .spinner-heading {
+    font-size: 1.2rem;
+  }
+
+  .spinner-text {
+    font-size: 0.95rem;
+  }
+}

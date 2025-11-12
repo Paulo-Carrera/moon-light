@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import products from '../data/products.js';
+import './Checkout.css'; // Add this line to use external styles
 
 const Checkout = () => {
   const location = useLocation();
@@ -27,7 +28,6 @@ const Checkout = () => {
     const form = e.target;
     setLoading(true);
 
-    // Scroll to spinner after DOM updates
     setTimeout(() => {
       spinnerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 100);
@@ -59,27 +59,18 @@ const Checkout = () => {
   return (
     <div className="gradient-wrapper">
       {!loading && <div className="star"></div>}
-      <div>
-        <h1 style={{ textAlign: 'center', color: 'white', fontSize: '2.5rem', marginBottom: '2rem' }}>Checkout</h1>
+      <div className="checkout-container">
+        <h1 className="checkout-title">Checkout</h1>
 
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            maxWidth: '700px',
-            margin: '0 auto',
-            padding: '2rem',
-            background: 'transparent',
-            color: 'white',
-          }}
-        >
-          <label style={labelStyle}>
+        <form onSubmit={handleSubmit} className="checkout-form">
+          <label className="checkout-label">
             Product:
             <select
               name="product"
               value={selectedProductId}
               onChange={(e) => setSelectedProductId(e.target.value)}
               required
-              style={inputStyle}
+              className="checkout-input"
             >
               {products.map((product) => (
                 <option key={product.id} value={product.id}>
@@ -90,17 +81,13 @@ const Checkout = () => {
           </label>
 
           {selectedProduct && (
-            <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-              <img
-                src={selectedProduct.image}
-                alt={selectedProduct.name}
-                style={{ width: '200px', borderRadius: '8px' }}
-              />
+            <div className="product-preview">
+              <img src={selectedProduct.image} alt={selectedProduct.name} className="product-image" />
               <p>{selectedProduct.description}</p>
             </div>
           )}
 
-          <label style={labelStyle}>
+          <label className="checkout-label">
             Quantity:
             <input
               type="number"
@@ -109,56 +96,44 @@ const Checkout = () => {
               max={selectedProduct?.maxQuantity || 10}
               value={quantity}
               onChange={(e) => setQuantity(Number(e.target.value))}
-              style={inputStyle}
+              className="checkout-input"
             />
           </label>
 
-          <label style={labelStyle}>
+          <label className="checkout-label">
             Email:
-            <input type="email" name="email" required placeholder="you@example.com" style={inputStyle} />
+            <input type="email" name="email" required placeholder="you@example.com" className="checkout-input" />
           </label>
 
-          <label style={labelStyle}>
+          <label className="checkout-label">
             Full Name:
-            <input type="text" name="shippingName" required placeholder="John Doe" style={inputStyle} />
+            <input type="text" name="shippingName" required placeholder="John Doe" className="checkout-input" />
           </label>
 
-          <label style={labelStyle}>
+          <label className="checkout-label">
             Street Address:
-            <input type="text" name="shippingAddressLine1" required placeholder="123 Main St" style={inputStyle} />
+            <input type="text" name="shippingAddressLine1" required placeholder="123 Main St" className="checkout-input" />
           </label>
 
-          <label style={labelStyle}>
+          <label className="checkout-label">
             City:
-            <input type="text" name="shippingCity" required placeholder="Los Angeles" style={inputStyle} />
+            <input type="text" name="shippingCity" required placeholder="Los Angeles" className="checkout-input" />
           </label>
 
-          <label style={labelStyle}>
+          <label className="checkout-label">
             State:
-            <input type="text" name="shippingState" required placeholder="CA" style={inputStyle} />
+            <input type="text" name="shippingState" required placeholder="CA" className="checkout-input" />
           </label>
 
-          <label style={labelStyle}>
+          <label className="checkout-label">
             ZIP Code:
-            <input type="text" name="shippingPostalCode" required placeholder="90001" style={inputStyle} />
+            <input type="text" name="shippingPostalCode" required placeholder="90001" className="checkout-input" />
           </label>
 
           <button
             type="submit"
             disabled={loading || !selectedProduct}
-            style={{
-              backgroundColor: '#3a0066',
-              color: 'white',
-              padding: '1rem 2rem',
-              fontSize: '1.1rem',
-              border: 'none',
-              borderRadius: '8px',
-              cursor: loading ? 'not-allowed' : 'pointer',
-              boxShadow: '0 0 10px rgba(58, 0, 102, 0.6)',
-              transition: 'all 0.3s ease',
-              width: '100%',
-              opacity: loading ? 0.6 : 1,
-            }}
+            className="checkout-button"
           >
             {loading ? 'Processing...' : 'Buy Now'}
           </button>
@@ -174,23 +149,6 @@ const Checkout = () => {
       </div>
     </div>
   );
-};
-
-const labelStyle = {
-  display: 'block',
-  marginBottom: '0.5rem',
-  fontWeight: 'bold',
-  fontSize: '1.1rem',
-};
-
-const inputStyle = {
-  display: 'block',
-  width: '100%',
-  marginBottom: '1.5rem',
-  padding: '1rem',
-  fontSize: '1rem',
-  borderRadius: '8px',
-  border: '1px solid #ccc',
 };
 
 export default Checkout;
